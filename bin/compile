@@ -213,6 +213,8 @@ cp $BP_DIR/conf/nginx/nginx.conf.default $BUILD_DIR/.heroku/php/etc/nginx/nginx.
 mkdir -p $BUILD_DIR/.heroku/php/.versions/nginx
 echo $NGINX_VERSION > $BUILD_DIR/.heroku/php/.versions/nginx/nginx
 
+source $BP_DIR/bin/phalcon.sh
+
 # handle extensions for PHP
 if [[ "${PHP_VERSION}" ]]; then
     status "Installing PHP extensions..."
@@ -367,6 +369,6 @@ install_blackfire_agent
 
 if [[ ! -f "Procfile" ]]; then
     bindir=$(composer config bin-dir 2> /dev/null | tail -n 1) # tail, as composer echos outdated version warnings to STDOUT
-    echo "web: $bindir/heroku-$engine-apache2" > Procfile
-    notice_inline "No Procfile, defaulting to 'web: $bindir/heroku-$engine-apache2'"
+    echo "web: $bindir/heroku-$engine-apache2 public" > Procfile
+    notice_inline "No Procfile, defaulting to 'web: $bindir/heroku-$engine-apache2 public'"
 fi
