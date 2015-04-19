@@ -14,6 +14,7 @@ if [ ! -d "$phalcon_dir" ]; then
 fi
 
 cd $phalcon_dir/build
+git checkout phalcon-v1.3.4
 export PATH=$BUILD_DIR/.heroku/php/bin:$PATH
 bash ./install
 
