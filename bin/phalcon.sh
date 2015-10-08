@@ -13,9 +13,14 @@ if [ ! -d "$phalcon_dir" ]; then
   exit
 fi
 
-cd $phalcon_dir/build
+cd $phalcon_dir
 git checkout phalcon-v1.3.4
+cd build/64bits
+phpize
+export CFLAGS="-O2 -g"
 export PATH=$BUILD_DIR/.heroku/php/bin:$PATH
-bash ./install
+./configure
+make
+make install
 
 cd $cwd
