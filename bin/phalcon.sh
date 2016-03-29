@@ -14,7 +14,7 @@ if [ ! -d "$phalcon_dir" ]; then
 fi
 
 cd $phalcon_dir
-git checkout phalcon-v1.3.4
+git checkout phalcon-v2.0.10
 cd build/64bits
 phpize
 export CFLAGS="-O2 -g"
